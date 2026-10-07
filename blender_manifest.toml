@@ -1,0 +1,20 @@
+schema_version = "1.0.0"
+
+id = "sheepit_export"
+version = "1.0.0"
+name = "SheepIt Export"
+tagline = "Package a scene and all its files into a SheepIt-ready zip"
+maintainer = "Pat"
+type = "add-on"
+
+tags = ["Render"]
+
+blender_version_min = "4.2.0"
+
+license = ["SPDX:GPL-3.0-or-later"]
+
+[permissions]
+files = "Copies the project's external files and writes the export zip"
+
+[build]
+paths_exclude_pattern = ["__pycache__/", "/.git/", "/.gitignore", "*.zip", "/tests/"]
