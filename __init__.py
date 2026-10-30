@@ -28,6 +28,12 @@ ADDON_DIR = os.path.dirname(os.path.abspath(__file__))
 SHEEPIT_URL = "https://www.sheepit-renderfarm.com/"
 
 
+# Blender 4.5+ marks "//" paths red unless the property says it accepts them.
+REL_PATH = ({"PATH_SUPPORTS_BLEND_RELATIVE"}
+            if "is_path_supports_blend_relative" in bpy.types.Property.bl_rna.properties
+            else set())
+
+
 # --------------------------------------------------------------------------
 # Settings
 # --------------------------------------------------------------------------
@@ -40,6 +46,7 @@ class SheepItPrefs(bpy.types.AddonPreferences):
         description="Optional path to an ffmpeg executable, used to shrink video "
                     "textures when the zip is over the limit",
         subtype="FILE_PATH",
+        options=REL_PATH,
     )
 
     def draw(self, context):
@@ -53,6 +60,7 @@ class SheepItPrefs(bpy.types.AddonPreferences):
 class SheepItSettings(bpy.types.PropertyGroup):
     output_dir: StringProperty(
         name="Output Folder", subtype="DIR_PATH", default="//sheepit_export/",
+        options=REL_PATH,
         description="Where the zip is written")
     remove_hidden: BoolProperty(
         name="Remove Hidden", default=True,
