@@ -17,7 +17,6 @@ import os
 import shutil
 import subprocess
 import tempfile
-import textwrap
 
 import bpy
 from bpy.props import (BoolProperty, CollectionProperty, EnumProperty, IntProperty,
@@ -291,6 +290,34 @@ class SHEEPIT_OT_open_output(bpy.types.Operator):
 # UI
 # --------------------------------------------------------------------------
 
+def ui_scale():
+    prefs = bpy.context.preferences.system
+    return getattr(prefs, "ui_scale", 1.0) * getattr(prefs, "pixel_size", 1.0)
+
+
+def wrap_px(text, max_px):
+    """Word-wrap text to a pixel width using Blender's UI font metrics."""
+    try:
+        import blf
+        style = bpy.context.preferences.ui_styles[0].widget
+        size = getattr(style, "points", 11) * bpy.context.preferences.system.ui_scale
+        blf.size(0, size)
+        measure = lambda t: blf.dimensions(0, t)[0]  # noqa: E731
+    except Exception:
+        measure = lambda t: len(t) * 7 * ui_scale()  # noqa: E731
+    lines, cur = [], ""
+    for word in text.split(" "):
+        trial = f"{cur} {word}" if cur else word
+        if cur and measure(trial) > max_px:
+            lines.append(cur)
+            cur = word
+        else:
+            cur = trial
+    if cur:
+        lines.append(cur)
+    return lines
+
+
 ICONS = {"ERROR": "CANCEL", "WARNING": "ERROR", "INFO": "INFO", "OK": "CHECKMARK"}
 
 
@@ -338,13 +365,13 @@ class SHEEPIT_PT_export(bpy.types.Panel):
 
         if len(wm.sheepit_reports):
             box = layout.box()
-            scale = context.preferences.system.ui_scale or 1.0
-            width = max(24, int((context.region.width - 70 * scale) / (7.6 * scale)))
+            # Margins: panel padding, box border and the icon column.
+            avail = context.region.width - 64 * ui_scale()
             for item in wm.sheepit_reports:
                 col = box.column(align=True)
                 lines = []
                 for para in item.text.splitlines() or [""]:
-                    lines += textwrap.wrap(para, width) or [""]
+                    lines += wrap_px(para, avail) or [""]
                 for i, line in enumerate(lines[:12]):
                     col.label(text=line, icon=ICONS.get(item.level, "DOT") if i == 0 else "BLANK1")
 
