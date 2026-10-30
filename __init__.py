@@ -5,7 +5,7 @@ SheepIt render farm, with every external file included and paths made relative.
 bl_info = {
     "name": "SheepIt Export",
     "author": "Pat",
-    "version": (1, 0, 0),
+    "version": (1, 0, 1),
     "blender": (4, 2, 0),
     "location": "Properties > Render > SheepIt Export",
     "description": "Package the scene and all external files into a SheepIt-ready zip",
@@ -338,7 +338,8 @@ class SHEEPIT_PT_export(bpy.types.Panel):
 
         if len(wm.sheepit_reports):
             box = layout.box()
-            width = max(30, int(context.region.width / 7.5))
+            scale = context.preferences.system.ui_scale or 1.0
+            width = max(24, int((context.region.width - 70 * scale) / (7.6 * scale)))
             for item in wm.sheepit_reports:
                 col = box.column(align=True)
                 lines = []

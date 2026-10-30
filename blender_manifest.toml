@@ -1,7 +1,7 @@
-schema_version = "1.0.0"
+schema_version = "1.0.1"
 
 id = "sheepit_export"
-version = "1.0.0"
+version = "1.0.1"
 name = "SheepIt Export"
 tagline = "Package a scene and all its files into a SheepIt-ready zip"
 maintainer = "Pat"

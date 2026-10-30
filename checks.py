@@ -140,7 +140,11 @@ def run(context, props):
         key = d.label.split(" '")[0].split(" (")[0]
         counts[key] = counts.get(key, 0) + 1
     if counts:
-        add("INFO", "Will include: " + ", ".join(f"{v} {k.lower()}" for k, v in counts.items()))
+        def plural(word, n):
+            if not word[1:2].isupper():  # keep acronyms like UDIM, VSE, OCIO
+                word = word[0].lower() + word[1:]
+            return word if n == 1 or word.endswith("s") else word + "s"
+        add("INFO", "Will include: " + ", ".join(f"{v} {plural(k, v)}" for k, v in counts.items()))
 
     try:
         total += os.path.getsize(bpy.data.filepath)
