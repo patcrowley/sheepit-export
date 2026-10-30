@@ -5,7 +5,7 @@ SheepIt render farm, with every external file included and paths made relative.
 bl_info = {
     "name": "SheepIt Export",
     "author": "Pat",
-    "version": (1, 0, 1),
+    "version": (1, 0, 2),
     "blender": (4, 2, 0),
     "location": "Properties > Render > SheepIt Export",
     "description": "Package the scene and all external files into a SheepIt-ready zip",

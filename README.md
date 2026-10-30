@@ -4,19 +4,39 @@ Blender add-on that turns the current scene into a single zip you can upload to 
 [SheepIt render farm](https://www.sheepit-renderfarm.com/), with every external file
 included and all paths relative.
 
+![Your files from several drives packed into one SheepIt-ready zip](docs/how-it-works.svg)
+
 ## Install
 
 Blender 4.2 or newer: **Edit > Preferences > Get Extensions > ⌄ > Install from Disk** and
-pick `sheepit_export.zip` (or drag the zip onto the Blender window).
+pick `sheepit_export.zip` from the [latest release](https://github.com/patcrowley/sheepit-export/releases/latest)
+(or drag the zip onto the Blender window).
 
 ## Use
 
 Properties editor > **Render** tab > **SheepIt Export**.
 
-1. **Check Scene** lists problems against SheepIt's rules.
-2. **Export for SheepIt** builds `<name>_sheepit.zip` in the output folder
-   (default `//sheepit_export/`). It runs in the background; press Esc to cancel.
-3. Upload the zip on SheepIt and pick the `.blend` inside it.
+<table>
+<tr>
+<td width="50%" valign="top">
+
+<b>1. Check Scene</b> lists problems against SheepIt's rules and shows what will be packed.
+
+<img src="docs/panel-check.png" alt="SheepIt Export panel after Check Scene" width="100%">
+
+</td>
+<td width="50%" valign="top">
+
+<b>2. Export for SheepIt</b> builds <code>&lt;name&gt;_sheepit.zip</code> in the output folder
+(default <code>//sheepit_export/</code>). It runs in the background; press Esc to cancel.
+
+<img src="docs/panel-export.png" alt="SheepIt Export panel after a finished export" width="100%">
+
+</td>
+</tr>
+</table>
+
+**3.** Upload the zip on SheepIt and pick the `.blend` inside it.
 
 Your open file is never modified; the export works on a copy.
 

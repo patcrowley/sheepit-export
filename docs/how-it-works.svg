@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="1000" height="420" rx="14" fill="#1f2227"/>
+
+  <!-- Left: scattered project -->
+  <text x="40" y="48" fill="#e6e6e6" font-size="18" font-weight="600">Your project, spread across disks</text>
+  <g font-size="14" fill="#cfd3d8">
+    <rect x="40" y="70" width="330" height="44" rx="8" fill="#2b2f36" stroke="#3d434c"/>
+    <text x="58" y="97">📄 F:\shots\crate_shot.blend</text>
+    <rect x="40" y="124" width="330" height="44" rx="8" fill="#2b2f36" stroke="#3d434c"/>
+    <text x="58" y="151">🖼  D:\library\textures\*.png</text>
+    <rect x="40" y="178" width="330" height="44" rx="8" fill="#2b2f36" stroke="#3d434c"/>
+    <text x="58" y="205">🎞  E:\plates\bg_plate_####.exr</text>
+    <rect x="40" y="232" width="330" height="44" rx="8" fill="#2b2f36" stroke="#3d434c"/>
+    <text x="58" y="259">💧 F:\shots\blendcache_crate_shot\</text>
+    <rect x="40" y="286" width="330" height="44" rx="8" fill="#2b2f36" stroke="#3d434c"/>
+    <text x="58" y="313">🔗 linked library .blend files</text>
+    <rect x="40" y="340" width="330" height="44" rx="8" fill="#3a2a2c" stroke="#7a3b40" stroke-dasharray="5 4"/>
+    <text x="58" y="367" fill="#e79aa0">👻 hidden objects → left out</text>
+  </g>
+
+  <!-- Middle: add-on -->
+  <g>
+    <path d="M385 227 H455" stroke="#7aa2f7" stroke-width="3" fill="none" marker-end="url(#a)"/>
+    <rect x="465" y="170" width="150" height="114" rx="12" fill="#2d3b55" stroke="#7aa2f7" stroke-width="2"/>
+    <text x="540" y="204" fill="#ffffff" font-size="16" font-weight="700" text-anchor="middle">SheepIt Export</text>
+    <g font-size="12.5" fill="#c8d3f5" text-anchor="middle">
+      <text x="540" y="228">copy + relink files</text>
+      <text x="540" y="246">drop hidden objects</text>
+      <text x="540" y="264">shrink if over limit</text>
+    </g>
+    <path d="M625 227 H695" stroke="#7aa2f7" stroke-width="3" fill="none" marker-end="url(#a)"/>
+  </g>
+
+  <!-- Right: zip -->
+  <text x="705" y="48" fill="#e6e6e6" font-size="18" font-weight="600">One zip for SheepIt</text>
+  <rect x="705" y="70" width="255" height="314" rx="10" fill="#22302a" stroke="#4f9a6e" stroke-width="2"/>
+  <g font-size="13.5" fill="#cfe8d8" font-family="SFMono-Regular, Consolas, Menlo, monospace">
+    <text x="722" y="100" font-weight="700" fill="#9fe0b8">crate_shot_sheepit.zip</text>
+    <text x="722" y="132">├ crate_shot.blend</text>
+    <text x="722" y="158">├ assets/</text>
+    <text x="722" y="182">│ ├ textures/</text>
+    <text x="722" y="206">│ └ plates/</text>
+    <text x="722" y="232">├ blendcache_crate_shot/</text>
+    <text x="722" y="258">└ OCIO/  (if used)</text>
+  </g>
+  <g font-size="12.5" fill="#9fb8a8">
+    <text x="722" y="300">✓ all paths relative</text>
+    <text x="722" y="322">✓ libraries made local</text>
+    <text x="722" y="344">✓ under the 2,048 MB limit</text>
+  </g>
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#7aa2f7"/>
+    </marker>
+  </defs>
+</svg>
